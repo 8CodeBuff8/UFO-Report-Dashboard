@@ -1,7 +1,7 @@
 import pandas as pd
 import plotly.express as px
 
-ufo_data = pd.read_csv("data/ufo_sighting_data.csv", low_memory=False)
+ufo_data = pd.read_csv("../data/ufo_sighting_data.csv", low_memory=False)
 ufo_data['Date_time'] = pd.to_datetime(ufo_data['Date_time'], errors='coerce')
 
 
@@ -14,9 +14,9 @@ for month in months:
 month_names = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 months_values = list(months.values())
 
-months={"month":month_names, "counts":months_values}
-fig = px.bar(months, x="month", y="counts")
-fig.write_html("html/months.html")
+months_parsed={"month":month_names, "counts":months_values}
+fig = px.bar(months_parsed, x="month", y="counts")
+fig.write_html("../html/months.html")
 
 month_perc = {}
 sum_reports = sum(months_values)
@@ -28,8 +28,29 @@ print("For context, 1% is equivalent to, ", 0.01*sum_reports," reports")
 for month in month_perc:
     print(month, ":", "{:.2f}".format(month_perc[month]),"% of reports")
 
-# =================================================================================
+print("\n")
+print("==============================================================================")
+print("\n")
 # Seasons
+summer = fall = winter = spring = 0
+for key, val in months.items():
+    if key in [6,7,8]:
+        summer += val
+    elif key in [9,10,11]:
+        fall += val
+    elif key in [12,1,2]:
+        winter += val
+    else:
+        spring += val
+
+season_perc = {"Summer":summer, "Fall":fall, "Winter":winter, "Spring":spring}
+for season, count in season_perc.items():
+    print(season + ": ", "{:.2f}".format((count/sum_reports)*100),"% of reports")
+
+seasons_parsed = {"season":season_perc.keys(), "counts":season_perc.values()} 
+fig = px.bar(seasons_parsed, x="season", y="counts")
+fig.write_html("../html/seasons.html")
+
 
 # =================================================================================
 # Years
