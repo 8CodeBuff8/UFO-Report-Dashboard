@@ -1,3 +1,4 @@
+import numpy as np
 import pandas as pd
 import plotly.express as px
 
@@ -78,8 +79,33 @@ hours = ufo_data["Date_time"].dt.hour.value_counts().to_dict()
 hours_parsed = {"Hour":hours.keys(), "Count":hours.values()}
 fig = px.bar(hours_parsed, x="Hour", y="Count")
 fig.write_html("../html/hours.html")
-# =================================================================================
+
+print("\n")
+print("============================================================================")
+print("\n")
+
 # UFO Shape
+shapes = ufo_data["UFO_shape"].value_counts().to_dict()
+shapes_parsed = {"Shape":shapes.keys(), "Count":shapes.values()}
+fig = px.pie(shapes_parsed, values="Count", names="Shape", title="Distribution of Reported UFO Shapes")
+fig.write_html("../html/shapes.html")
+
+
+
+
+print("\n")
+print("============================================================================")
+print("\n")
 
 # =================================================================================
 # Length of Encounter
+ufo_data['length_of_encounter_seconds'] = pd.to_numeric(ufo_data['length_of_encounter_seconds'], errors='coerce')
+lengths = (np.ceil(ufo_data["length_of_encounter_seconds"]/60)).value_counts().to_dict()
+lengths_parsed = {"Length of Encounter in minutes":lengths.keys(), "Count":lengths.values()}
+fig = px.pie(lengths_parsed, names="Length of Encounter in minutes", values="Count", title="Length of Encounters in minutes")
+fig.write_html("../html/encounter_lengths.html")
+
+
+
+
+
