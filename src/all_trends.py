@@ -2,34 +2,28 @@ import numpy as np
 import pandas as pd
 import plotly.express as px
 
-ufo_data = pd.read_csv("../data/ufo_sighting_data.csv", low_memory=False)
+data = "../data/ufo_sighting_data.csv" 
+ufo_data = pd.read_csv(data, low_memory=False)
 ufo_data['Date_time'] = pd.to_datetime(ufo_data['Date_time'], errors='coerce')
 
+#World Map
+fig = px.scatter_mapbox(ufo_data, lat="latitude", lon="longitude", hover_name="city", hover_data=["UFO_shape", "description"], color_discrete_sequence=["fuchsia"], zoom=3, height=900)
+fig.update_layout(mapbox_style="open-street-map")
+fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
+fig.write_html("../html/world_map.html")
 
 #Months
-months = {1:0, 2:0, 3:0, 4:0, 5:0, 6:0, 7:0, 8:0, 9:0, 10:0, 11:0, 12:0}
-
-for month in months:
-    months[month] = (ufo_data["Date_time"].dt.month==month).sum()
-
-month_names = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-months_values = list(months.values())
-
-months_parsed={"month":month_names, "counts":months_values}
-fig = px.bar(months_parsed, x="month", y="counts")
+months = ufo_data["Date_time"].dt.month.value_counts().to_dict()
+months_parsed={"month":months.keys(), "counts":months.values()}
+fig = px.bar(months_parsed, x="month", y="counts", title="UFO Reports by Month")
 fig.write_html("../html/months.html")
 
-month_perc = {}
-sum_reports = sum(months_values)
-for month, count in zip(month_names, months_values):
-    month_perc[month] = (count/sum_reports)*100
-
 print("UFO Report Monthly Trends:")
-print("Total Reports with date: ",sum_reports)
-print("For context, 1% is equivalent to,", 0.01*sum_reports,"reports")
+print("Total Reports with date: ", sum(months.values()))
+print("For context, 1% is equivalent to,", 0.01*sum(months.values()),"reports")
 print("\n")
-for month in month_perc:
-    print(month+":", "{:.2f}".format(month_perc[month]),"% of reports")
+for month, count in months.items():
+    print(str(int(month))+":", "{:.2f}".format(count/sum(months.values())*100),"% of reports")
 
 print("\n")
 print("==============================================================================")
@@ -51,10 +45,10 @@ print("UFO Report Seasonal Trends:")
 print("Total Reports with Month:", summer+fall+winter+spring)
 print("\n")
 for season, count in season_perc.items():
-    print(season + ": ", "{:.2f}".format((count/sum_reports)*100),"%")
+    print(season + ": ", "{:.2f}".format((count/sum(months.values()))*100),"%")
 
 seasons_parsed = {"season":season_perc.keys(), "counts":season_perc.values()} 
-fig = px.bar(seasons_parsed, x="season", y="counts")
+fig = px.pie(seasons_parsed, values="counts", names="season", title="UFO Reports by Season")
 fig.write_html("../html/seasons.html")
 
 
@@ -64,12 +58,12 @@ print("\n")
 # Years
 years = ufo_data['Date_time'].dt.year.value_counts().to_dict()
 years_parsed = {"Year":years.keys(), "Counts":years.values()}
-fig1 = px.bar(years_parsed, x="Year", y="Counts")
+fig1 = px.bar(years_parsed, x="Year", y="Counts", title="UFO Reports by Year")
 decades = ((ufo_data["Date_time"].dt.year//10)*10).value_counts().to_dict()
 
 #Decades
 decades_parsed = {"Decade":decades.keys(), "Count":decades.values()}
-fig2 = px.bar(decades_parsed, x="Decade", y="Count")
+fig2 = px.bar(decades_parsed, x="Decade", y="Count", title="UFO Reports by Decade")
 with open("../html/years.html", "a") as f:
     f.write(fig1.to_html(full_html=False))
     f.write(fig2.to_html(full_html=False))
@@ -89,7 +83,7 @@ print("\n")
 # Time of Day
 hours = ufo_data["Date_time"].dt.hour.value_counts().to_dict()
 hours_parsed = {"Hour":hours.keys(), "Count":hours.values()}
-fig = px.bar(hours_parsed, x="Hour", y="Count")
+fig = px.bar(hours_parsed, x="Hour", y="Count", title="UFO Reports by hour of the day")
 fig.write_html("../html/hours.html")
 
 print("UFO Hourly Report Trends")
