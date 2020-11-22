@@ -52,8 +52,23 @@ fig = px.bar(seasons_parsed, x="season", y="counts")
 fig.write_html("../html/seasons.html")
 
 
-# =================================================================================
+print("\n")
+print("==============================================================================")
+print("\n")
 # Years
+years = ufo_data['Date_time'].dt.year.value_counts().to_dict()
+years_parsed = {"Year":years.keys(), "Counts":years.values()}
+fig1 = px.bar(years_parsed, x="Year", y="Counts")
+decades = ((ufo_data["Date_time"].dt.year//10)*10).value_counts().to_dict()
+
+#Decades
+decades_parsed = {"Decade":decades.keys(), "Count":decades.values()}
+print(decades_parsed)
+fig2 = px.bar(decades_parsed, x="Decade", y="Count")
+with open("../html/years.html", "a") as f:
+    f.write(fig1.to_html(full_html=False))
+    f.write(fig2.to_html(full_html=False))
+#Print the distribution as well
 
 # =================================================================================
 # Time of Day
