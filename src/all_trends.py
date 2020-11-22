@@ -24,10 +24,12 @@ sum_reports = sum(months_values)
 for month, count in zip(month_names, months_values):
     month_perc[month] = (count/sum_reports)*100
 
+print("Monthly Trends:")
 print("Total Reports with date: ",sum_reports)
-print("For context, 1% is equivalent to, ", 0.01*sum_reports," reports")
+print("For context, 1% is equivalent to,", 0.01*sum_reports,"reports")
+print("\n")
 for month in month_perc:
-    print(month, ":", "{:.2f}".format(month_perc[month]),"% of reports")
+    print(month+":", "{:.2f}".format(month_perc[month]),"% of reports")
 
 print("\n")
 print("==============================================================================")
@@ -45,8 +47,11 @@ for key, val in months.items():
         spring += val
 
 season_perc = {"Summer":summer, "Fall":fall, "Winter":winter, "Spring":spring}
+print("Seasonal Trends:")
+print("Total Reports with Month:", summer+fall+winter+spring)
+print("\n")
 for season, count in season_perc.items():
-    print(season + ": ", "{:.2f}".format((count/sum_reports)*100),"% of reports")
+    print(season + ": ", "{:.2f}".format((count/sum_reports)*100),"%")
 
 seasons_parsed = {"season":season_perc.keys(), "counts":season_perc.values()} 
 fig = px.bar(seasons_parsed, x="season", y="counts")
@@ -70,6 +75,13 @@ with open("../html/years.html", "a") as f:
     f.write(fig2.to_html(full_html=False))
 #Print the distribution as well
 
+print("Yearly Trends:")
+print("Total Reports with Year:", sum(decades.values()), "Reports")
+print("\n")
+for key, val in decades.items():
+    print(int(key), "-",str(int(key+10))+": ", "{:.2f}".format(val/sum(decades.values())*100), "%")
+
+
 print("\n")
 print("============================================================================")
 print("\n")
@@ -80,6 +92,11 @@ hours_parsed = {"Hour":hours.keys(), "Count":hours.values()}
 fig = px.bar(hours_parsed, x="Hour", y="Count")
 fig.write_html("../html/hours.html")
 
+print("Total Reports with Time:", sum(hours.values()), "Reports")
+print("\n")
+for key,val in hours.items():
+    print(str(key)+":", "{:.2f}".format(val/sum(hours.values())*100), "%")
+
 print("\n")
 print("============================================================================")
 print("\n")
@@ -89,7 +106,11 @@ shapes = ufo_data["UFO_shape"].value_counts().to_dict()
 shapes_parsed = {"Shape":shapes.keys(), "Count":shapes.values()}
 fig = px.pie(shapes_parsed, values="Count", names="Shape", title="Distribution of Reported UFO Shapes")
 fig.write_html("../html/shapes.html")
-
+print("UFO Shape Trends:")
+print("Total Reports with UFO Shape:", sum(shapes.values()), "Reports")
+print("\n")
+for key, val in shapes.items():
+    print(key+":", "{:.2f}".format(val/sum(shapes.values())*100), "%")
 
 
 
@@ -105,6 +126,10 @@ lengths_parsed = {"Length of Encounter in minutes":lengths.keys(), "Count":lengt
 fig = px.pie(lengths_parsed, names="Length of Encounter in minutes", values="Count", title="Length of Encounters in minutes")
 fig.write_html("../html/encounter_lengths.html")
 
+print("Total Reports with length of encounter:", sum(lengths.values()), "Reports")
+print("\n")
+for key,val in lengths.items():
+    print(str(int(key))+" minutes:", "{:.2f}".format(val/sum(lengths.values())*100), "%")
 
 
 
