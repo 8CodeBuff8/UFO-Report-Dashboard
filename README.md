@@ -1,4 +1,4 @@
-# UFO-Report-Dashboard
+# UFO Report Dashboard
 
 Data used is [NUFORC Reporting Data containing over 80,000 detailed reports](https://www.kaggle.com/NUFORC/ufo-sightings)
 
