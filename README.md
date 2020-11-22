@@ -22,7 +22,7 @@ Total Reports with Year: 79638 Reports
 * 1900 - 1910:  0.00 %
 
 
-* [UFO Reports by Months](https://8codebuff8.github.io/UFO-Report-Dashboard/html/months.html)
+[UFO Reports by Months](https://8codebuff8.github.io/UFO-Report-Dashboard/html/months.html)
 
 UFO Report Monthly Trends:
 Total Reports with date:  79638
