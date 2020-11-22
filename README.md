@@ -7,6 +7,7 @@ Data used is [NUFORC Reporting Data containing over 80,000 detailed reports](htt
 
 ### UFO Report Yearly Trends
 [UFO Reports by Year and Decade](https://8codebuff8.github.io/UFO-Report-Dashboard/html/years.html)
+
 Total Reports with Year: 79638 Reports
 
 * 2000 - 2010:  48.31 %
@@ -24,7 +25,9 @@ Total Reports with Year: 79638 Reports
 
 ### UFO Report Monthly Trends
 [UFO Reports by Months](https://8codebuff8.github.io/UFO-Report-Dashboard/html/months.html)
+
 Total Reports with date:  79638
+
 For context, 1% is equivalent to, 796.38 reports
 
 * January: 7.07 % of reports
@@ -42,6 +45,7 @@ For context, 1% is equivalent to, 796.38 reports
 
 ### UFO Report Seasonal Trends
 [UFO Reports by Seasons](https://8codebuff8.github.io/UFO-Report-Dashboard/html/seasons.html)
+
 Total Reports with Month: 79638
 
 * Summer:  32.71 %
@@ -51,6 +55,7 @@ Total Reports with Month: 79638
 
 ### UFO Hourly Report Trends
 [UFO Reports by Hour](https://8codebuff8.github.io/UFO-Report-Dashboard/html/hours.html)
+
 Total Reports with Time: 79638 Reports
 
 * 21.0: 14.37 %
@@ -80,6 +85,7 @@ Total Reports with Time: 79638 Reports
 
 ### UFO Shape Trends
 [UFO Reports by UFO Shape](https://8codebuff8.github.io/UFO-Report-Dashboard/html/shapes.html)
+
 Total Reports with UFO Shape: 78400 Reports
 
 * light: 21.13 %
@@ -114,6 +120,7 @@ Total Reports with UFO Shape: 78400 Reports
 
 ### UFO Length of Encounter Trends in Minutes
 [UFO Reports by Length of Encounters](https://8codebuff8.github.io/UFO-Report-Dashboard/html/encounter_lengths.html)
+
 Total Reports with length of encounter: 80329 Reports
 
 * 1 minutes: 36.66 %
