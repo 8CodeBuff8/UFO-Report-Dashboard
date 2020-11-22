@@ -2,6 +2,9 @@
 
 Data used is [NUFORC Reporting Data containing over 80,000 detailed reports](https://www.kaggle.com/NUFORC/ufo-sightings)
 
+## UFO Report World Map
+[UFO Report Map](https://8codebuff8.github.io/UFO-Report-Dashboard/html/global_map.html)
+
 ## UFO Report Trends
 
 
