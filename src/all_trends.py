@@ -63,16 +63,21 @@ decades = ((ufo_data["Date_time"].dt.year//10)*10).value_counts().to_dict()
 
 #Decades
 decades_parsed = {"Decade":decades.keys(), "Count":decades.values()}
-print(decades_parsed)
 fig2 = px.bar(decades_parsed, x="Decade", y="Count")
 with open("../html/years.html", "a") as f:
     f.write(fig1.to_html(full_html=False))
     f.write(fig2.to_html(full_html=False))
 #Print the distribution as well
 
-# =================================================================================
-# Time of Day
+print("\n")
+print("============================================================================")
+print("\n")
 
+# Time of Day
+hours = ufo_data["Date_time"].dt.hour.value_counts().to_dict()
+hours_parsed = {"Hour":hours.keys(), "Count":hours.values()}
+fig = px.bar(hours_parsed, x="Hour", y="Count")
+fig.write_html("../html/hours.html")
 # =================================================================================
 # UFO Shape
 
