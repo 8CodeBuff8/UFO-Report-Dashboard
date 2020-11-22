@@ -24,7 +24,7 @@ sum_reports = sum(months_values)
 for month, count in zip(month_names, months_values):
     month_perc[month] = (count/sum_reports)*100
 
-print("Monthly Trends:")
+print("UFO Report Monthly Trends:")
 print("Total Reports with date: ",sum_reports)
 print("For context, 1% is equivalent to,", 0.01*sum_reports,"reports")
 print("\n")
@@ -47,7 +47,7 @@ for key, val in months.items():
         spring += val
 
 season_perc = {"Summer":summer, "Fall":fall, "Winter":winter, "Spring":spring}
-print("Seasonal Trends:")
+print("UFO Report Seasonal Trends:")
 print("Total Reports with Month:", summer+fall+winter+spring)
 print("\n")
 for season, count in season_perc.items():
@@ -75,7 +75,7 @@ with open("../html/years.html", "a") as f:
     f.write(fig2.to_html(full_html=False))
 #Print the distribution as well
 
-print("Yearly Trends:")
+print("UFO Report Yearly Trends:")
 print("Total Reports with Year:", sum(decades.values()), "Reports")
 print("\n")
 for key, val in decades.items():
@@ -92,6 +92,7 @@ hours_parsed = {"Hour":hours.keys(), "Count":hours.values()}
 fig = px.bar(hours_parsed, x="Hour", y="Count")
 fig.write_html("../html/hours.html")
 
+print("UFO Hourly Report Trends")
 print("Total Reports with Time:", sum(hours.values()), "Reports")
 print("\n")
 for key,val in hours.items():
@@ -126,6 +127,7 @@ lengths_parsed = {"Length of Encounter in minutes":lengths.keys(), "Count":lengt
 fig = px.pie(lengths_parsed, names="Length of Encounter in minutes", values="Count", title="Length of Encounters in minutes")
 fig.write_html("../html/encounter_lengths.html")
 
+print("UFO Length of Encounter Trends in Minutes:")
 print("Total Reports with length of encounter:", sum(lengths.values()), "Reports")
 print("\n")
 for key,val in lengths.items():
