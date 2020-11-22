@@ -11,3 +11,6 @@ https://8codebuff8.github.io/UFO-Report-Dashboard/html/months.html
 
 * UFO Reports by Seasons:
 https://8codebuff8.github.io/UFO-Report-Dashboard/html/seasons.html
+
+* UFO Reports by Hour:
+https://8codebuff8.github.io/UFO-Report-Dashboard/html/hours.html
