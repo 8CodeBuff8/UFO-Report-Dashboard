@@ -12,6 +12,24 @@ fig.update_layout(mapbox_style="open-street-map")
 fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
 fig.write_html("../html/world_map.html")
 
+#====================================================================================
+# Map of UFO's and Nuclear Power Plants
+fig = px.scatter_mapbox(ufo_data, lat="latitude", lon="longitude", hover_name="city", hover_data=["Date_time", "UFO_shape", "description"], color_discrete_sequence=["fuchsia"], zoom=3, height=900)
+fig.update_layout(mapbox_style="open-street-map")
+fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
+
+nuclear_plant_data = "../data/nuclear-plants-locations.csv"
+plant_data = pd.read_csv(nuclear_plant_data, low_memory=False)
+fig.add_trace(px.scatter_mapbox(plant_data, lat="Latitude", lon="Longitude", hover_name="Plant", hover_data=["Plant", "NumReactor"]).data[0])
+fig.write_html("../html/world_map_with_nuclear.html")
+
+
+
+
+
+
+#===================================================================================
+
 #Months
 months = ufo_data["Date_time"].dt.month.value_counts().to_dict()
 months_parsed={"month":months.keys(), "counts":months.values()}
