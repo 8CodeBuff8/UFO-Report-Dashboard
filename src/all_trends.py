@@ -1,6 +1,8 @@
 import numpy as np
 import pandas as pd
 import plotly.express as px
+from math import radians, cos, sin, asin, sqrt
+
 
 data = "../data/ufo_sighting_data.csv" 
 ufo_data = pd.read_csv(data, low_memory=False)
@@ -23,6 +25,42 @@ plant_data = pd.read_csv(nuclear_plant_data, low_memory=False)
 fig.add_trace(px.scatter_mapbox(plant_data, lat="Latitude", lon="Longitude", hover_name="Plant", hover_data=["Plant", "NumReactor"]).data[0])
 fig.write_html("../html/world_map_with_nuclear.html")
 
+
+def haversine(lon1, lat1, lon2, lat2):
+    """
+    Calculate the great circle distance between two points 
+    on the earth (specified in decimal degrees)
+    """
+    # convert decimal degrees to radians 
+    lon1, lat1, lon2, lat2 = map(radians, [lon1, lat1, lon2, lat2])
+
+    # haversine formula 
+    dlon = lon2 - lon1 
+    dlat = lat2 - lat1 
+    a = sin(dlat/2)**2 + cos(lat1) * cos(lat2) * sin(dlon/2)**2
+    c = 2 * asin(sqrt(a)) 
+    r = 6371 # Radius of earth in kilometers. Use 3956 for miles
+    return c * r
+
+#for every ufo report:
+   #for every nuclear plant:
+       # if ufo report in nuclear plant radius
+          #  count += 1
+          #  break
+
+report_count_in_plant_r = 0
+for row in ufo_data.itertuples():
+    for row_2 in plant_data.itertuples():
+        #print(ufo_data.columns)
+        #print(row.latitude,row.longitude,row_2.Latitude, row_2.Longitude)
+        if haversine(row.longitude, row.latitude, row_2.Longitude, row_2.Latitude) <= 5.00:
+            report_count_in_plant_r += 1
+            print(report_count_in_plant_r)
+            break
+
+print("Amount of UFO reports located within 5KM Radius of Nuclear Power Plant:", report_count_in_plant_r)
+print("\n")
+print(report_count_in_plant_r//ufo_data.shape)
 
 
 
