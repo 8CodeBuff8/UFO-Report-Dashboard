@@ -9,6 +9,7 @@ Data used is [NUFORC Reporting Data containing over 80,000 detailed reports](htt
 
 ### UFO Report Nuclear Plant Proximity
 [UFO Report Nuclear Plant Map](https://8codebuff8.github.io/UFO-Report-Dashboard/html/world_map_with_nuclear.html)
+How many UFO reports are located within a certain radius of any nuclear plant?
 
 | Radius Size   |      Total      |  Percentage of Reports |
 |:----------:|:-------------:|:------:|
