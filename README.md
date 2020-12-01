@@ -12,8 +12,7 @@ Data used is [NUFORC Reporting Data containing over 80,000 detailed reports](htt
 
 | Radius Size   |      Total      |  Percentage of Reports |
 |:----------:|:-------------:|:------:|
-| 5 KM |   |  |
-| 10 KM |     |  |
+| 10 KM | 565 | 0.70 % |
 | 20 KM | 2237 | 2.78 % |
 | 50 KM |  15527 | 19.33 % |
 | 100 KM | 39887 | 49.65 % |
