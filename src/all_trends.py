@@ -7,22 +7,33 @@ from math import radians, cos, sin, asin, sqrt
 data = "../data/ufo_sighting_data.csv" 
 ufo_data = pd.read_csv(data, low_memory=False)
 ufo_data['Date_time'] = pd.to_datetime(ufo_data['Date_time'], errors='coerce')
-
+#print(ufo_data.isnull().sum().sum())
 #World Map
 fig = px.scatter_mapbox(ufo_data, lat="latitude", lon="longitude", hover_name="city", hover_data=["UFO_shape", "description"], color_discrete_sequence=["fuchsia"], zoom=3, height=900)
 fig.update_layout(mapbox_style="open-street-map")
 fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
 fig.write_html("../html/world_map.html")
-
 #====================================================================================
 # Map of UFO's and Nuclear Power Plants
 fig = px.scatter_mapbox(ufo_data, lat="latitude", lon="longitude", hover_name="city", hover_data=["Date_time", "UFO_shape", "description"], color_discrete_sequence=["fuchsia"], zoom=3, height=900)
 fig.update_layout(mapbox_style="open-street-map")
 fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
+fig.update_traces(marker_allowoverlap=True)
+
 
 nuclear_plant_data = "../data/nuclear-plants-locations.csv"
 plant_data = pd.read_csv(nuclear_plant_data, low_memory=False)
 fig.add_trace(px.scatter_mapbox(plant_data, lat="Latitude", lon="Longitude", hover_name="Plant", hover_data=["Plant", "NumReactor"]).data[0])
+
+
+fig['data'][1]['marker'] = {'allowoverlap': True, 'size': 15, 'color': 'green'}
+#print(fig)
+#print(fig['data'][0]['lat'])
+#print(len(fig['data'][0]['lat']))
+#print(len(fig['data'][0]['lon']))
+#print(len(fig['data'][1]['lat']))
+#print(len(fig['data'][1]['lon']))
+#print("" in fig['data'][0]['lat'])
 fig.write_html("../html/world_map_with_nuclear.html")
 
 
@@ -47,20 +58,20 @@ def haversine(lon1, lat1, lon2, lat2):
        # if ufo report in nuclear plant radius
           #  count += 1
           #  break
-
+#print(ufo_data.shape[0])
 report_count_in_plant_r = 0
 for row in ufo_data.itertuples():
     for row_2 in plant_data.itertuples():
         #print(ufo_data.columns)
         #print(row.latitude,row.longitude,row_2.Latitude, row_2.Longitude)
-        if haversine(row.longitude, row.latitude, row_2.Longitude, row_2.Latitude) <= 5.00:
+        if haversine(row.longitude, row.latitude, row_2.Longitude, row_2.Latitude) <= 10.00:
             report_count_in_plant_r += 1
-            print(report_count_in_plant_r)
+            #print(report_count_in_plant_r)
             break
 
-print("Amount of UFO reports located within 5KM Radius of Nuclear Power Plant:", report_count_in_plant_r)
+print("Amount of UFO reports located within 10KM Radius of Nuclear Power Plant:", report_count_in_plant_r)
 print("\n")
-print(report_count_in_plant_r//ufo_data.shape)
+print("{:.2f}".format((report_count_in_plant_r/(ufo_data.shape)[0]) * 100), "% of reports take place within a 20 KM radius of Nuclear Power Plants")
 
 
 
