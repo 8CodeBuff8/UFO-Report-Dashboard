@@ -11,7 +11,7 @@ Data used is [NUFORC Reporting Data containing over 80,000 detailed reports](htt
 [UFO Report Nuclear Plant Map](https://8codebuff8.github.io/UFO-Report-Dashboard/html/world_map_with_nuclear.html)
 
 | Radius Size   |      Total      |  Percentage of Reports |
-|----------|:-------------:|------:|
+|:----------:|:-------------:|:------:|
 | 5 KM |   |  |
 | 10 KM |     |  |
 | 20 KM | 2237 | 2.78 % |
