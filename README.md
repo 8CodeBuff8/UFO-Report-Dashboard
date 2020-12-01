@@ -7,6 +7,17 @@ Data used is [NUFORC Reporting Data containing over 80,000 detailed reports](htt
 
 ## UFO Report Trends
 
+### UFO Report Nuclear Plant Proximity
+[UFO Report Nuclear Plant Map](https://8codebuff8.github.io/UFO-Report-Dashboard/html/world_map_with_nuclear.html)
+
+| Radius Size   |      Total      |  Percentage of Reports |
+|----------|:-------------:|------:|
+| 5 KM |   |  |
+| 10 KM |     |  |
+| 20 KM | 2237 | 2.78 % |
+| 50 KM |  15527 | 19.33 % |
+| 100 KM | 39887 | 49.65 % |
+
 
 ### UFO Report Yearly Trends
 [UFO Reports by Year and Decade](https://8codebuff8.github.io/UFO-Report-Dashboard/html/years.html)
