@@ -24,7 +24,7 @@ fig.update_traces(marker_allowoverlap=True)
 nuclear_plant_data = "../data/nuclear-plants-locations.csv"
 plant_data = pd.read_csv(nuclear_plant_data, low_memory=False)
 fig.add_trace(px.scatter_mapbox(plant_data, lat="Latitude", lon="Longitude", hover_name="Plant", hover_data=["Plant", "NumReactor"]).data[0])
-
+fig['data'][0]['marker'] = {'allowoverlap': True, 'color': '#e00404' }
 
 fig['data'][1]['marker'] = {'allowoverlap': True, 'size': 15, 'color': 'green'}
 #print(fig)
