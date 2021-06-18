@@ -3,12 +3,12 @@
 Data used is [NUFORC Reporting Data containing over 80,000 detailed reports](https://www.kaggle.com/NUFORC/ufo-sightings) (scrubbed edition of the data)
 
 ## UFO Report World Map
-[UFO Report Map](https://8codebuff8.github.io/UFO-Report-Dashboard/html/world_map.html)
+[UFO Report Map](https://vasileskimatea.github.io/UFO-Report-Dashboard/html/world_map.html)
 
 ## UFO Report Trends
 
 ### UFO Report Nuclear Plant Proximity
-[UFO Report Nuclear Plant Map](https://8codebuff8.github.io/UFO-Report-Dashboard/html/world_map_with_nuclear.html)
+[UFO Report Nuclear Plant Map](https://vasileskimatea.github.io/UFO-Report-Dashboard/html/world_map_with_nuclear.html)
 
 How many UFO reports are located within a certain radius of any nuclear plant?
 
@@ -21,7 +21,7 @@ How many UFO reports are located within a certain radius of any nuclear plant?
 
 
 ### UFO Report Yearly Trends
-[UFO Reports by Year and Decade](https://8codebuff8.github.io/UFO-Report-Dashboard/html/years.html)
+[UFO Reports by Year and Decade](https://vasileskimatea.github.io/UFO-Report-Dashboard/html/years.html)
 
 Total Reports with Year: 79638 Reports
 
@@ -39,7 +39,7 @@ Total Reports with Year: 79638 Reports
 * 1900 - 1910:  0.00 %
 
 ### UFO Report Monthly Trends
-[UFO Reports by Months](https://8codebuff8.github.io/UFO-Report-Dashboard/html/months.html)
+[UFO Reports by Months](https://vasileskimatea.github.io/UFO-Report-Dashboard/html/months.html)
 
 Total Reports with date:  79638
 
@@ -59,7 +59,7 @@ For context, 1% is equivalent to, 796.38 reports
 * December: 7.06 % of reports
 
 ### UFO Report Seasonal Trends
-[UFO Reports by Seasons](https://8codebuff8.github.io/UFO-Report-Dashboard/html/seasons.html)
+[UFO Reports by Seasons](https://vasileskimatea.github.io/UFO-Report-Dashboard/html/seasons.html)
 
 Total Reports with Month: 79638
 
@@ -69,7 +69,7 @@ Total Reports with Month: 79638
 * Spring:  20.27 %
 
 ### UFO Hourly Report Trends
-[UFO Reports by Hour](https://8codebuff8.github.io/UFO-Report-Dashboard/html/hours.html)
+[UFO Reports by Hour](https://vasileskimatea.github.io/UFO-Report-Dashboard/html/hours.html)
 
 Total Reports with Time: 79638 Reports
 
@@ -99,7 +99,7 @@ Total Reports with Time: 79638 Reports
 * 8.0: 1.01 %
 
 ### UFO Shape Trends
-[UFO Reports by UFO Shape](https://8codebuff8.github.io/UFO-Report-Dashboard/html/shapes.html)
+[UFO Reports by UFO Shape](https://vasileskimatea.github.io/UFO-Report-Dashboard/html/shapes.html)
 
 Total Reports with UFO Shape: 78400 Reports
 
@@ -134,7 +134,7 @@ Total Reports with UFO Shape: 78400 Reports
 * flare: 0.00 %
 
 ### UFO Length of Encounter Trends in Minutes
-[UFO Reports by Length of Encounters](https://8codebuff8.github.io/UFO-Report-Dashboard/html/encounter_lengths.html)
+[UFO Reports by Length of Encounters](https://vasileskimatea.github.io/UFO-Report-Dashboard/html/encounter_lengths.html)
 
 Total Reports with length of encounter: 80329 Reports
 
